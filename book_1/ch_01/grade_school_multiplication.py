@@ -40,6 +40,11 @@ if n_bi < 0:
     n_b = str(n_bi)
     sign *= -1
 
+# ensure that a number with more digits is named n_a
+if len(n_b) > len(n_a):
+    temp = n_b
+    n_b = n_a
+    n_a = temp
 
 # convert integers to string, then reverse
 s_a = str(n_a)[::-1]
@@ -54,6 +59,8 @@ for i in range(len(s_b)):
         keep, to_carry = single_digits_multiply(int(s_b[i]), int(s_a[j]), carry)
         res.append(keep)
         carry = to_carry
+    if carry > 0:
+        res.append(carry)
     rows.append(res[::-1])
 
 rrows = []
